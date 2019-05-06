@@ -64,6 +64,9 @@ ipcMain.on('full-window', () => {
   mainWindow.setFullScreen(true);
   mainWindow.setResizable(true);
 });
+// ipcMain.on('full-window', () => {
+//   mainWindow.setResizable(true);
+// });
 
 ipcMain.on('logout', () => {
   mainWindow.setFullScreen(false);
