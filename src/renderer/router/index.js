@@ -2,22 +2,20 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import LoginPage from '@/components/LoginPage';
+//
 import Header from '@/components/Header';
 import IndexPage from '@/components/IndexPage';
 import Main from '@/components/Main';
+//
 import MonitorSidebar from '@/components/Monitor/Sidebar';
 import MonitorPage from '@/components/Monitor/MonitorPage';
-import MapContentSidebar from '@/components/Setting/MapContent/Sidebar';
-// import MapEditorPage from '@/components/Setting/MapContent/MapEditorPage';
+//
+import SettingSidebar from '@/components/Setting/Sidebar';
 import MapContentPage from '@/components/Setting/MapContent/MapContentPage';
-import ParkingSidebar from '@/components/Setting/Parking/Sidebar';
-import ParkingPage from '@/components/Setting/Parking/ParkingPage';
-import LogsSidebar from '@/components/Setting/Logs/Sidebar';
-import LogsPage from '@/components/Setting/Logs/LogsPage';
-import WatchdogSidebar from '@/components/Setting/Watchdog/Sidebar';
-import WatchdogPage from '@/components/Setting/Watchdog/WatchdogPage';
-// import ToDoList from '@/components/ToDoList';
-// import TimeCounter from '@/components/TimeCounter';
+import ParkingPage from '@/components/Setting/ParkingPage';
+import WatchdogPage from '@/components/Setting/WatchdogPage';
+//
+import LogsPage from '@/components/LogsPage';
 
 Vue.use(Router);
 
@@ -69,7 +67,7 @@ export default new Router({
           path: '/setting/mapContent',
           name: 'map',
           components: {
-            sidebar: MapContentSidebar,
+            sidebar: SettingSidebar,
             content: MapContentPage,
           },
         },
@@ -77,44 +75,49 @@ export default new Router({
           path: '/setting/parkingContent',
           name: 'parking',
           components: {
-            sidebar: ParkingSidebar,
+            sidebar: SettingSidebar,
             content: ParkingPage,
-          },
-        },
-        {
-          path: '/setting/logsContent',
-          name: 'logs',
-          components: {
-            sidebar: LogsSidebar,
-            content: LogsPage,
           },
         },
         {
           path: '/setting/watchdogContent',
           name: 'watchdog',
           components: {
-            sidebar: WatchdogSidebar,
+            sidebar: SettingSidebar,
             content: WatchdogPage,
+          },
+        },
+        {
+          path: '/setting',
+          redirect: '/setting/mapContent',
+        },
+      ],
+    },
+    {
+      path: '/setting/logsContent',
+      name: 'logs',
+      components: {
+        sidebar: SettingSidebar,
+        content: LogsPage,
+      },
+    },
+    {
+      path: '/logsContent',
+      components: {
+        nav: Header,
+        main: Main,
+      },
+      children:
+      [
+        {
+          path: '/logsContent',
+          name: 'logs',
+          components: {
+            content: LogsPage,
           },
         },
       ],
     },
-    // {
-    //   path: '/todo',
-    //   name: 'toDoList',
-    //   components: {
-    //     default: ToDoList,
-    //     nav: Header,
-    //   },
-    // },
-    // {
-    //   path: '/time',
-    //   name: 'timeCounter',
-    //   components: {
-    //     default: TimeCounter,
-    //     nav: Header,
-    //   },
-    // },
     {
       path: '*',
       redirect: '/monitor',

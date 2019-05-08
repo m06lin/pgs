@@ -37,24 +37,25 @@ export default {
 #setting-sidebar .sidebar-nav { 
     width: 100%;
     margin: 0;
-    padding: 10%;
+    padding: 0;
     list-style: none;
 }
 
 #setting-sidebar .sidebar-nav li {
     line-height: 2;
+    background-color: steelblue;
+    border: solid 1px white;
 }
 
 #setting-sidebar .sidebar-nav li a{
     padding-left: 10%;
     display: block;
     font-size: 1.5rem;
-    font-weight: bold;
-    color: rgb(128, 127, 127);
+    color: white;
     text-decoration: none;
 }
 #setting-sidebar .sidebar-nav li a:hover{
-    color: rgb(0, 0, 0);
+    color: rgb(175, 220, 241);
 }
 
 #setting-sidebar .sidebar-icon {

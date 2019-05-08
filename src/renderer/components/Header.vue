@@ -4,13 +4,9 @@
       <b-navbar-brand>
         <img src="../assets/pssGroupLogo.png" draggable="false" class="rounded" alt="logo">
       </b-navbar-brand>
-      <b-nav-item to="/monitor">主頁監控</b-nav-item>
-      <b-nav-item-dropdown text="設定功能">
-        <b-dropdown-item href="#">地圖</b-dropdown-item>
-        <b-dropdown-item href="#">車位</b-dropdown-item>
-        <b-dropdown-item href="#">監控器</b-dropdown-item>
-        <b-dropdown-item href="#">日誌</b-dropdown-item>
-      </b-nav-item-dropdown>    
+      <b-nav-item to="/monitor">主畫面</b-nav-item>
+      <b-nav-item to="/setting">設定</b-nav-item>
+      <b-nav-item to="/logsContent">日誌</b-nav-item>   
     </b-navbar-nav>
     <b-navbar-nav>
       <b-nav-form>
@@ -78,32 +74,4 @@ export default {
   .btn-secondary:hover{
     color: rgb(0, 0, 0) !important;
   }
-  .dropdown-menu{
-    background-color: #343a40 !important;
-    padding: 0;
-    margin: 1px 0 0 0;
-    font-size: 1.5rem;
-    border-radius: 0;
-  }
-  .dropdown-item {
-    color:rgb(211, 211, 211) !important;
-    border-bottom: 1px solid rgb(163, 163, 163);
-  }
-  .dropdown-item:hover {
-    background-color: #757b81 !important;
-    color:rgb(255, 255, 255) !important;
-    border-top: 1px solid rgb(100, 100, 100);
-  }
-  .dropdown-item:active {
-    background-color: rgb(141, 141, 141) !important;
-    color: #2a2a2a !important;
-  }
-
-  .user-dropdown{
-    width: 160px;
-    text-align: center;
-  }
-  /* .show{
-    margin-top: 0;
-  } */
 </style>
