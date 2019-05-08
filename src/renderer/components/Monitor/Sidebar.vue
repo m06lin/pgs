@@ -1,5 +1,5 @@
 <template>
-  <aside id="monitor-page" class="monitor-sidebar-bg px-3"> 
+  <aside id="monitor-sidebar" class="monitor-sidebar-bg px-3"> 
   
       <h2>系統監控</h2>
 
@@ -113,6 +113,11 @@ export default {
 </script>
 
 <style>
+
+#monitor-sidebar select ,
+#monitor-sidebar label {
+  font-size: 1rem !important;
+}
 .monitor-sidebar-bg {
   background: rgb(231, 231, 231);
   color: rgb(0, 0, 0);
@@ -121,7 +126,7 @@ export default {
   padding-bottom: 10px;
   text-align:center;
 }
-.sidebar-title {
+#monitor-sidebar .sidebar-title {
   font-size: 1.3rem;
   text-align-last: center;
 }
@@ -137,7 +142,7 @@ export default {
   background-color: rgb(230, 230, 230);
 } */
 h2{
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   text-align: center;
   font-weight: bold;
 }
@@ -153,7 +158,7 @@ h5{
   top: 0 !important;
   background-color:white;
 } */
-.sidebar-table-scroll {
+#monitor-sidebar .sidebar-table-scroll {
   overflow-y: auto; 
   position: absolute; 
   top: 0; right:0; bottom: 0; left: 0;
