@@ -12,6 +12,8 @@ import MonitorPage from '@/components/Monitor/MonitorPage';
 //
 import SettingSidebar from '@/components/Setting/Sidebar';
 import MapContentPage from '@/components/Setting/MapContent/MapContentPage';
+import MapEditorSidebar from '@/components/Setting/MapContent/Sidebar';
+import MapEditorPage from '@/components/Setting/MapContent/MapEditorPage';
 import ParkingPage from '@/components/Setting/ParkingPage';
 import WatchdogPage from '@/components/Setting/WatchdogPage';
 //
@@ -69,6 +71,14 @@ export default new Router({
           components: {
             sidebar: SettingSidebar,
             content: MapContentPage,
+          },
+        },
+        {
+          path: '/setting/mapContent/:id',
+          name: 'editor',
+          components: {
+            sidebar: MapEditorSidebar,
+            content: MapEditorPage,
           },
         },
         {

@@ -17,7 +17,7 @@
             </div>
             <form action autocomplete="off" v-if="!isDataLoading">
               <div class="text-center">
-                <h1 style="color:white">Login</h1>
+                <h1 style="color:white">{{ $t('welcome') }}</h1>
               </div>
               <hr class="pgs-hr">
               <div class="form-group">
@@ -38,7 +38,7 @@
                   @keyup.enter="loginEvent()"
                 >
               </div>
-              <div class="row custom-control custom-checkbox pgs-input-margin">
+              <div class="row custom-control checkbox-inline pgs-input-margin">
                 <input id="remberMe" type="checkbox" class="custom-control-input">
                 <label for="remberMe" style="color:white" class="custom-control-label">記住帳號密碼</label>
               </div>
@@ -72,7 +72,12 @@
                 </button> -->
               </div>
               <div class="text-center" v-if="isUserLoading"><span id="loginloading"></span></div>
-              
+              <div class="language">
+                <ul>
+                  <li><a href="#" class="lang" :class="{nowlang: locale=='tw'}" @click="changeLang('tw')">繁體中文</a></li>
+                  <li><a href="#" class="lang" :class="{nowlang: locale=='en'}" @click="changeLang('en')">English</a></li>
+                </ul>
+              </div>
             </form>
           </div>
         </div>
@@ -80,7 +85,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data: function data() {
@@ -94,7 +98,11 @@ export default {
       isDataLoading: false,
       counter: 0,
       max: 100,
+      locale: 'tw',
     };
+  },
+  mounted() {
+    this.locale = this.$i18n.locale;
   },
   methods: {
     async loginEvent() {
@@ -198,6 +206,10 @@ export default {
     //   //   setTimeout(this.loading, 100);
     //   // }
     // },
+    changeLang(newLang) {
+      this.locale = newLang;
+      this.$i18n.locale = newLang;
+    },
   },
 };
 </script>
@@ -329,5 +341,25 @@ export default {
             transform: scale(1); 
   } 
 }
-
+.language ul{
+  margin:0;
+	padding:0;
+	list-style:none;
+  float: right;
+}
+.language ul li{
+  float:left;
+  margin: 2px;
+}
+.lang{
+  color: rgb(206, 206, 206);
+}
+.lang:hover{
+  text-decoration:none;
+  color: #fff;
+}
+.nowlang{
+  color: #fff;
+  border-bottom:solid 1px white;
+}
 </style>
