@@ -1,5 +1,5 @@
 <template>
-  <b-navbar id="navbar" class="d-flex justify-content-between" type="dark" variant="dark">  
+  <b-navbar class="d-flex justify-content-between navbar-height" type="dark" variant="dark">  
     <b-navbar-nav class="px-2">
       <b-navbar-brand>
         <img src="../assets/pssGroupLogo.png" draggable="false" class="rounded" alt="logo">
@@ -14,7 +14,7 @@
         <b-button style="margin-left:-50px"><i class="oi oi-magnifying-glass"></i></b-button>
       </b-nav-form>
       <div class="my-2 ml-4" style="border:1px solid rgba(211, 211, 211, 0.6);"></div>
-      <b-nav-item-dropdown class="user-dropdown">
+      <b-nav-item-dropdown class="user-dropdown" right>
         <template slot="button-content">
           {{userName}}
         </template>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style>
-  .navbar {
+  .navbar-height {
     height: 60px;
   }
   .navbar-brand{

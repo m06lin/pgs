@@ -1,17 +1,15 @@
 <template>
   <aside id="monitor-sidebar" class="monitor-sidebar-bg px-3"> 
-  
-      <h2>系統監控</h2>
-
+    <h2>系統監控</h2>
     <div class="box" style="height: 30%">
-      <div class="monitor-sidebar-table">         
+      <div class="monitor-sidebar-table">
         <div class="mx-0 justify-content-between row" style="height: 15%" >
           <b-form-group class="px-0 col-8" style="margin:auto">
             <b-form-select v-model="selectFloor" :options="options"></b-form-select>
           </b-form-group>
           <div class="btn-group-toggle px-0 col-3" style="margin:auto">
             <label class="btn btn-secondary active">
-              <input type="checkbox" autocomplete="off" @click="showTypeOrArea=!showTypeOrArea" v-modle="showTypeOrArea">
+              <input type="checkbox" autocomplete="off" v-model="showTypeOrArea">
                 {{showTypeOrArea?'區域':'種類'}}
             </label>
           </div>
@@ -52,7 +50,6 @@ export default {
   data: function data() {
     return {
       showTypeOrArea: true,
-      showTypeOrAreaWord: '區域',
       selectFloor: 1,
       options: [
         { value: 1, text: 'AB棟-B1樓' },
