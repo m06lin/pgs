@@ -5,11 +5,12 @@ import LoginPage from '@/components/LoginPage';
 //
 import Header from '@/components/Header';
 import IndexPage from '@/components/IndexPage';
-import Main from '@/components/Main';
 //
+import Monitor from '@/components/Monitor';
 import MonitorSidebar from '@/components/Monitor/Sidebar';
 import MonitorPage from '@/components/Monitor/MonitorPage';
 //
+import Setting from '@/components/Setting';
 import SettingSidebar from '@/components/Setting/Sidebar';
 import MapContentPage from '@/components/Setting/MapContent/MapContentPage';
 import MapEditorSidebar from '@/components/Setting/MapContent/Sidebar';
@@ -43,7 +44,7 @@ export default new Router({
       path: '/monitor',
       components: {
         nav: Header,
-        main: Main,
+        main: Monitor,
       },
       children:
       [
@@ -62,7 +63,7 @@ export default new Router({
       name: 'setting',
       components: {
         nav: Header,
-        main: Main,
+        main: Setting,
       },
       children:
       [
@@ -113,29 +114,11 @@ export default new Router({
       ],
     },
     {
-      path: '/setting/logsContent',
-      name: 'logs',
-      components: {
-        sidebar: SettingSidebar,
-        content: LogsPage,
-      },
-    },
-    {
       path: '/logsContent',
       components: {
         nav: Header,
-        main: Main,
+        main: LogsPage,
       },
-      children:
-      [
-        {
-          path: '/logsContent',
-          name: 'logs',
-          components: {
-            content: LogsPage,
-          },
-        },
-      ],
     },
     {
       path: '*',

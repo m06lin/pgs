@@ -1,11 +1,12 @@
 <template>
-  <main class="setting-content-page">
-    <div class="setting-content-nav-box mx-3 row align-items-center">
+  <main>
+    <div class="setting-content-title mx-3 row align-items-center">
       <h1 class="mx-2">停車場地圖 <b-button class="button-circle" variant="outline-secondary" v-b-modal.modal-add-map><i class="oi oi-plus"></i></b-button></h1>   
     </div>
-    <div class="m-4">
+    <div class="setting-content-maps">
+    <div class="setting-content-scroll p-3">
       <b-card-group deck>
-        <b-card style="max-width: 30%;" no-body v-for="(item, key) in mapContent" v-bind:key="item.key">
+        <b-card class="mb-3" style="min-width:25%; max-width:25%;" no-body v-for="(item, key) in mapContent" v-bind:key="item.key">
           <b-card-body class="text-right">
             <input type="text" class="text-center" style="border:0; font-size:1.3rem; min-width:50%" :value="item.name" readonly>
             <b-button variant="outline-dark" class="button-circle" @click="editMapNameModalEvent(item.name, key)"><i class="oi oi-pencil"></i></b-button>
@@ -21,6 +22,26 @@
         </b-card>
       </b-card-group>
     </div>
+    </div>
+    <!-- <div class="setting-content-maps p-3">
+      <div class="" style="width: 90%;">
+        <div class="card" style="width: 25%;" v-for="(item, key) in mapContent" v-bind:key="item.key">
+          <div class="card-header text-center">
+              {{item.name}}
+              <b-button variant="outline-dark" class="button-circle" @click="editMapNameModalEvent(item.name, key)"><i class="oi oi-pencil"></i></b-button>
+              <b-button variant="outline-dark" class="button-circle" @click="deletMapModalEvent(item)"><i class="oi oi-trash"></i></b-button>
+          </div>
+          <div class="card-body">
+              <img class="card-img" :src="item.pic" alt="Image">
+          </div>
+          <div class="card-footer text-right">
+            <b-button variant="outline-secondary">編輯區域</b-button>
+            <b-button variant="outline-secondary" @click="editMapEvent(item)">編輯地圖</b-button>
+            <b-button variant="outline-secondary" @click="editMapEvent2(item)">編輯地圖2</b-button>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <!-- Add New Map -->
     <b-modal id="modal-add-map" ref="addMapModal" title="新增地圖" @ok="addNewMapOkEvent"
@@ -122,11 +143,22 @@ export default {
 .button-circle{
   border-radius: 50%;
 }
-.setting-content-nav-box{
+.setting-content-title{
   height: 10%;
   border-bottom: solid 2px rgb(161, 161, 161);
-}
-.setting-content-title-box h1{
   font-size: 1.5rem;
 }
+.setting-content-scroll {
+  overflow-x: auto; 
+  position: absolute; 
+  top: 0; right:0; bottom: 0; left: 0;
+}
+.setting-content-maps{
+  height: 90%;
+  position:relative;
+}
+/* .card-columns{
+  height: 100%;
+  column-count: 4;
+} */
 </style>
