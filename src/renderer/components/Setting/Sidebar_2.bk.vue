@@ -34,7 +34,7 @@ export default {
 <style>
 
 
-#setting-sidebar .sidebar-nav { 
+/* #setting-sidebar .sidebar-nav { 
     width: 100%;
     margin: 0;
     padding: 0;
@@ -63,6 +63,6 @@ export default {
 }
 #setting-sidebar .oi {
     width: 30px;
-}
+} */
 
 </style>

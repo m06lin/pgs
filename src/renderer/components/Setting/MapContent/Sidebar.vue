@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style>
+
+#setting-sidebar{
+  -webkit-user-select: none;
+}
 .editor-sidebar-goback a{
     color: rgb(149, 149, 149);
     font-size: 2rem;

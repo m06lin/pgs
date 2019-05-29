@@ -116,6 +116,7 @@ export default {
   font-size: 1rem !important;
 }
 .monitor-sidebar-bg {
+  -webkit-user-select: none;
   background: rgb(231, 231, 231);
   color: rgb(0, 0, 0);
 }

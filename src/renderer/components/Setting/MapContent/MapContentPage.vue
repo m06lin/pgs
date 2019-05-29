@@ -4,24 +4,24 @@
       <h1 class="mx-2">停車場地圖 <b-button class="button-circle" variant="outline-secondary" v-b-modal.modal-add-map><i class="oi oi-plus"></i></b-button></h1>   
     </div>
     <div class="setting-content-maps">
-    <div class="setting-content-scroll p-3">
-      <b-card-group deck>
-        <b-card class="mb-3" style="min-width:25%; max-width:25%;" no-body v-for="(item, key) in mapContent" v-bind:key="item.key">
-          <b-card-body class="text-right">
-            <input type="text" class="text-center" style="border:0; font-size:1.3rem; min-width:50%" :value="item.name" readonly>
-            <b-button variant="outline-dark" class="button-circle" @click="editMapNameModalEvent(item.name, key)"><i class="oi oi-pencil"></i></b-button>
-            <b-button variant="outline-dark" class="button-circle" @click="deletMapModalEvent(item)"><i class="oi oi-trash"></i></b-button>
-            <hr>
-            <b-card-img :src="item.pic" alt="Image"></b-card-img>
-          </b-card-body>
-          <b-card-footer class="text-right">
-            <b-button variant="outline-secondary">編輯區域</b-button>
-            <b-button variant="outline-secondary" @click="editMapEvent(item)">編輯地圖</b-button>
-            <b-button variant="outline-secondary" @click="editMapEvent2(item)">編輯地圖2</b-button>
-          </b-card-footer>
-        </b-card>
-      </b-card-group>
-    </div>
+      <div class="setting-content-scroll p-3">
+        <b-card-group deck>
+          <b-card class="mb-3" style="min-width:25%; max-width:25%;" no-body v-for="(item, key) in mapContent" v-bind:key="item.key">
+            <b-card-body class="text-right">
+              <input type="text" class="text-center" style="border:0; font-size:1.3rem; min-width:50%" :value="item.name" readonly>
+              <b-button variant="outline-dark" class="button-circle" @click="editMapNameModalEvent(item.name, key)"><i class="oi oi-pencil"></i></b-button>
+              <b-button variant="outline-dark" class="button-circle" @click="deletMapModalEvent(item)"><i class="oi oi-trash"></i></b-button>
+              <hr>
+              <b-card-img :src="item.pic" alt="Image"></b-card-img>
+            </b-card-body>
+            <b-card-footer class="text-right">
+              <b-button variant="outline-secondary"  @click="editAreaEvent(item)">編輯區域</b-button>
+              <b-button variant="outline-secondary" @click="editMapEvent(item)">編輯地圖</b-button>
+              <!-- <b-button variant="outline-secondary" @click="editMapEvent2(item)">編輯地圖2</b-button> -->
+            </b-card-footer>
+          </b-card>
+        </b-card-group>
+      </div>
     </div>
     <!-- <div class="setting-content-maps p-3">
       <div class="" style="width: 90%;">
@@ -94,8 +94,11 @@ export default {
   mounted() {
   },
   methods: {
+    editAreaEvent(item) {
+      this.$router.push({ name: 'areaEditor', params: { id: item.id } });
+    },
     editMapEvent(item) {
-      this.$router.push({ name: 'editor', params: { id: item.id } });
+      this.$router.push({ name: 'mapEditor', params: { id: item.id } });
     },
     editMapEvent2(item) {
       this.$router.push({ name: 'editor2', params: { id: item.id } });

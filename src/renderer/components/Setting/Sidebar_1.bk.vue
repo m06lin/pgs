@@ -23,25 +23,25 @@
 </template>
 
 <script>
-export default {
-  data: function data() {
-    return {
-      addMap: '',
-      mapList: [
-        { id: 1, name: 'AB-B1' },
-        { id: 2, name: 'AB-B2' },
-        { id: 3, name: 'CD-B1' },
-        { id: 4, name: 'CD-B2' },
-      ],
-    };
-  },
-  computed: {},
-  methods: {},
-};
+// export default {
+//   data: function data() {
+//     return {
+//       addMap: '',
+//       mapList: [
+//         { id: 1, name: 'AB-B1' },
+//         { id: 2, name: 'AB-B2' },
+//         { id: 3, name: 'CD-B1' },
+//         { id: 4, name: 'CD-B2' },
+//       ],
+//     };
+//   },
+//   computed: {},
+//   methods: {},
+// };
 </script>
 
 <style>
-  .map-sidebar-bg {
+  /* .map-sidebar-bg {
     background: rgb(231, 231, 231);
     color: rgb(0, 0, 0);
   }
@@ -53,6 +53,6 @@ export default {
   }
   .button-circle{
     border-radius: 50%;
-  }
+  } */
 
 </style>

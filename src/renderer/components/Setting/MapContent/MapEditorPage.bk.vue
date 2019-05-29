@@ -1,6 +1,6 @@
 <template>
-  <main class="setting-map map-editor">
-    <div class="map-editor-title mx-3 row align-items-center">
+  <main class="map-editor">
+    <div class="map-editor-nav mx-3 row align-items-center">
       <a href="#/setting/mapContent" class="mr-3">
         <span class="icon mx-2"><i class="oi oi-chevron-left"></i></span>
         <span class="title">AB-3樓 編輯地圖</span>
@@ -8,10 +8,12 @@
       <b-button class="button-circle mt-2" variant="outline-secondary"><i class="oi oi-spreadsheet"></i></b-button>
     </div>
 
-    <div class="map-editor-pic" @click="addpointEvent">
+    <div class="map-editor-pic">
+      <img usemap="#editMap" @click="addpointEvent" src="https://tw-aed.mohw.gov.tw/UploadFile/20170703031250796.jpg">
       
-      <div class="map-editor-point" v-bind:style="{ left: itemSum, top: itemSum }"  v-for="item in items" :key="item.key"></div>
-     
+      <map name="editMap">
+        <component :is="item.component" :positionX="item.positionX" :positionY="item.positionY" v-for="item in items" v-bind:key="item.key"></component>
+      </map>
     </div>
 
   </main>
@@ -31,6 +33,8 @@ export default {
       console.log(event.offsetY);
       console.log(event.offsetX);
       this.items.push({
+        component: 'areaComponent',
+        id: this.itemSum,
         positionX: event.offsetX,
         positionY: event.offsetY,
       });
@@ -38,44 +42,41 @@ export default {
     },
   },
   components: {
+    areaComponent: {
+      props: ['positionX', 'positionY'],
+      template: '<area class="area" shape="circle" :coords=" positionX , positionY , 0" href="#" />',
+    },
   },
 };
 </script>
 
 <style>
-.map-editor-point{
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-  position: relative;
-}
-.map-editor .button-circle{
+/* .map-editor .button-circle{
   float: right;
 }
-.map-editor-title{
+.map-editor-nav{
   height: 10%;
   border-bottom: solid 2px rgb(161, 161, 161);
   font-size: 1.5rem;
 }
 .map-editor-pic{
   height: 90%;
-  background-image: url('https://tw-aed.mohw.gov.tw/UploadFile/20170703031250796.jpg');
-  background-repeat: no-repeat;
-
-  background-position: center;
-  background-size: cover;
 }
-
-.setting-map a{
-  color: rgb(49, 49, 49);
-  text-decoration: none;
+.map-editor-pic > img{
+  max-height: 100%;
+}
+.map-editor a{
+  color: rgb(149, 149, 149);
   display: block;
 }
-.setting-map .icon{
+.map-editor a:hover{
+  color: rgb(49, 49, 49);
+  text-decoration: none;
+}
+.map-editor .icon{
   font-size: 1.5rem;
 }
-.setting-map .title{
+.map-editor .title{
   font-size: 2rem;
-}
+} */
 </style>

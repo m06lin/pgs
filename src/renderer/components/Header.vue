@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="d-flex justify-content-between navbar-height" type="dark" variant="dark">  
+  <b-navbar id="header-nav" class="d-flex justify-content-between navbar-height" type="dark" variant="dark">  
     <b-navbar-nav class="px-2">
       <b-navbar-brand>
         <img src="../assets/pssGroupLogo.png" draggable="false" class="rounded" alt="logo">
@@ -48,30 +48,30 @@ export default {
 </script>
 
 <style>
-  .navbar-height {
+  #header-nav .navbar-height {
     height: 60px;
   }
-  .navbar-brand{
+  #header-nav .navbar-brand{
     font-size: 1.8rem !important;
   }
-  .nav-item{
+  #header-nav .nav-item{
     font-size: 1.5rem !important;
   }
-  .nav-link{
+  #header-nav .nav-link{
     color:rgb(211, 211, 211) !important;
   }
-  .nav-link:hover{
+  #header-nav .nav-link:hover{
     color:white !important;
   }
-  .router-link-active{
+  #header-nav .router-link-active{
     color:white !important;
   }
-  .btn-secondary{
+  #header-nav .btn-secondary{
     color: rgb(51, 51, 51) !important;
     background-color: white !important;
     border-color: rgb(163, 163, 163) !important;
   }
-  .btn-secondary:hover{
+  #header-nav .btn-secondary:hover{
     color: rgb(0, 0, 0) !important;
   }
 </style>
