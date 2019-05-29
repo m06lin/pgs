@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="setting-map map-editor">
     <div class="setting-content-title mx-3 row align-items-center">
       <h1 class="mx-2">停車場地圖 <b-button class="button-circle" variant="outline-secondary" v-b-modal.modal-add-map><i class="oi oi-plus"></i></b-button></h1>   
     </div>

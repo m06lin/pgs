@@ -1,5 +1,5 @@
 <template>
-  <aside id="setting-sidebar-nav" class="monitor-sidebar-bg">
+  <aside class="setting-sidebar monitor-sidebar-bg">
     <b-nav vertical class="sidebar-nav">
         <b-nav-item to="/setting/mapContent" active>
             <span class="sidebar-icon"><i class="oi oi-map"></i></span>
@@ -27,18 +27,17 @@ export default {
 <style>
 
 
-#setting-sidebar-nav .sidebar-nav { 
+.setting-sidebar .sidebar-nav { 
     width: 100%;
     margin: 0;
     padding: 10%;
     list-style: none;
 }
-
-#setting-sidebar-nav .sidebar-nav li {
-    line-height: 2;
+.setting-sidebar .nav{
+    display: -webkit-box;
 }
 
-#setting-sidebar-nav .sidebar-nav li a{
+.setting-sidebar .sidebar-nav li a{
     padding-left: 10%;
     display: block;
     font-size: 1.5rem;
@@ -46,18 +45,18 @@ export default {
     color: rgb(128, 127, 127);
     text-decoration: none;
 }
-#setting-sidebar-nav .sidebar-nav li a:hover{
+.setting-sidebar .sidebar-nav li a:hover{
     color: rgb(0, 0, 0);
 }
 
-#setting-sidebar-nav .router-link-active{
+.setting-sidebar .router-link-active{
     color: rgb(0, 0, 0) !important ;
 }
 
-#setting-sidebar-nav .sidebar-icon {
+.setting-sidebar .sidebar-icon {
     margin-right: 5%; 
 }
-#setting-sidebar-nav .oi {
+.setting-sidebar .oi {
     width: 30px;
 }
 

@@ -13,7 +13,7 @@ import MonitorPage from '@/components/Monitor/MonitorPage';
 import Setting from '@/components/Setting';
 import SettingSidebar from '@/components/Setting/Sidebar';
 import MapContentPage from '@/components/Setting/MapContent/MapContentPage';
-import MapEditorSidebar from '@/components/Setting/MapContent/Sidebar';
+import MapEditorSidebar from '@/components/Setting/MapContent/Sidebar.bk';
 import AreaEditorPage from '@/components/Setting/MapContent/AreaEditorPage';
 import MapEditorPage from '@/components/Setting/MapContent/MapEditorPage';
 import MapEditorPage2 from '@/components/Setting/MapContent/MapEditorPage2';
@@ -77,7 +77,7 @@ export default new Router({
           },
         },
         {
-          path: '/setting/areaEditor/:id',
+          path: '/setting/mapContent/areaEditor/:id',
           name: 'areaEditor',
           components: {
             sidebar: SettingSidebar,
@@ -85,7 +85,7 @@ export default new Router({
           },
         },
         {
-          path: '/setting/mapEditor/:id',
+          path: '/setting/mapContent/mapEditor/:id',
           name: 'mapEditor',
           components: {
             sidebar: SettingSidebar,

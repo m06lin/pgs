@@ -27,7 +27,7 @@ export default {
 
 <style>
 
-#setting-sidebar{
+/* #setting-sidebar{
   -webkit-user-select: none;
 }
 .editor-sidebar-goback a{
@@ -44,5 +44,5 @@ export default {
 .editor-sidebar-table {
   background: rgb(255, 255, 255);
   border-radius: 10px;
-}
+} */
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <div class="setting-map area-editor-title mx-3 row align-items-center">
+  <main class="setting-map map-content-editor">
+    <div class="area-editor-title mx-3 row align-items-center">
       <a href="#/setting/mapContent" class="mr-3">
         <span class="icon mx-1"><i class="oi oi-chevron-left"></i></span>
         <span class="title">A區 編輯區域</span>
@@ -13,7 +13,7 @@
           <b-card class="mb-3" style="min-width:20%; max-width:20%;" no-body v-for="(item, key) in areaContent" v-bind:key="item.key">
             <b-card-header class="text-right">
               <b-button variant="outline-dark" class="button-circle" @click="editAreaModalEvent(item, key)"><i class="oi oi-pencil"></i></b-button>
-              <b-button variant="outline-dark" class="button-circle" @click="deletAreaModalEvent(item)"><i class="oi oi-trash"></i></b-button>
+              <b-button variant="outline-dark" class="button-circle mr-2" @click="deletAreaModalEvent(item)"><i class="oi oi-trash"></i></b-button>
             </b-card-header>
             <b-card-body class="mx-2">
               <b-row class="my-2">
@@ -132,11 +132,13 @@ export default {
   height: 90%;
   position:relative;
 }
-.area-editor-content i{
+.area-editor-content .card-header {
+    padding-right: 0.2rem;
+}
+
+.area-editor-content .card-body p{
   font-size: 1.2rem;
   font-weight:bold;
 }
-.area-editor-content .card-header .oi{
 
-}
 </style>
