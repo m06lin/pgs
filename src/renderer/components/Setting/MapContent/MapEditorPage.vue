@@ -7,11 +7,8 @@
       </a>
       <b-button class="button-circle mt-2" variant="outline-secondary"><i class="oi oi-spreadsheet"></i></b-button>
     </div>
-
     <div class="map-editor-pic" @click="addpointEvent">
-      
       <div class="map-editor-point" v-bind:style="{ left: itemSum, top: itemSum }"  v-for="item in items" :key="item.key"></div>
-     
     </div>
 
   </main>
