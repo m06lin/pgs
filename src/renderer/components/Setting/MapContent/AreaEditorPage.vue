@@ -3,7 +3,7 @@
     <div class="area-editor-title mx-3 row align-items-center">
       <a href="#/setting/mapContent" class="mr-3">
         <span class="icon mx-1"><i class="oi oi-chevron-left"></i></span>
-        <span class="title">A區 編輯區域</span>
+        <span class="title">AB樓-B1層 編輯區域</span>
       </a>
       <b-button class="button-circle mt-2" variant="outline-dark" @click="addAreaModalEvent()"><i class="oi oi-plus"></i></b-button>
     </div>
