@@ -1,3 +1,65 @@
 {
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    
+    "layout.login.title.welcome": "Welcome",
+    "layout.login.checkbox.remberMe": "rember username and password",
+    "layout.login.button.login": "Login",
+    "api.login.accountError": "Username or password error!",
+    "api.login.systemError": "System error!",
+
+    "layout.header.navbar.monitor": "Monitor",
+    "layout.header.navbar.setting": "Setting",
+    "layout.header.navbar.logs": "Logs",
+    "layout.header.search.plateOrSpace": "plate or space num",
+    "layout.header.dropdown.porfile": "Porfile",
+    "layout.header.dropdown.logout": "Logout",
+    "layout.header.dropdown.exit": "Exit",
+
+    "layout.monitor.title.monitor": "System Monitor",
+    "layout.monitor.checkbox.area": "Area",
+    "layout.monitor.checkbox.type": "Type",
+    "layout.monitor.title.allFloor": "All Floor",
+    "layout.monitor.title.alert": "System Alert",
+
+    "layout.monitor.label.inUse": "Occupied",
+    "layout.monitor.label.noUse": "Vacant",
+    "layout.monitor.label.total": "Total",
+    "layout.monitor.label.useRate": "Occupancy Rate",
+
+    "layout.monitor.label.alertType": "Alert Type",
+    "layout.monitor.label.carNo": "Plate Number",
+    "layout.monitor.label.time": "Time",
+    
+    "layout.setting.sidebar.maps": "Maps",
+    "layout.setting.sidebar.spaces": "Spaces",
+    "layout.setting.sidebar.watchdogs": "Watchdogs",
+
+    "layout.parkingMaps.title.parkingmaps": "Parking Maps",
+    "layout.parkingMaps.title.map": "Map",
+    "layout.parkingMaps.info.fileFormat": "file format",
+    "layout.parkingMaps.info.fileSelect": "file selected",
+    "layout.parkingMaps.button.editAreas": "Edit Areas",
+    "layout.parkingMaps.button.editMap": "Edit Map",
+    "layout.parkingMaps.label.name": "Name",
+    "layout.parkingMaps.label.pic": "Picture",
+
+    "layout.parkingMaps.title.area": "Area",
+
+    "layout.parkingspaces.title.parkingspaces": "Parking Spaces",
+    "layout.parkingspaces.title.space": "Space",
+    "layout.parkingspaces.label.name": "Name",
+    "layout.parkingspaces.label.typeInit": "Type Init",
+    "layout.parkingspaces.label.emptyColor": "Vacant Color",
+    "layout.parkingspaces.label.inuseColor": "Occupied Color",
+    "layout.parkingspaces.label.errorColor": "Error Color",
+
+    "layout.modal.text.create": "Create",
+    "layout.modal.text.edit": "Edit",
+    "layout.modal.text.delete": "Delete",
+    "layout.modal.info.isDelete": "Delete {name} {title}?",
+    "layout.modal.text.cancel": "Cancel",
+    "layout.modal.select.default": "Default",
+    "layout.modal.select.notDefault": "Not Default"
+    
+    
 }

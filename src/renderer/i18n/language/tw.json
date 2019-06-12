@@ -1,3 +1,67 @@
 {
-    "welcome": "歡迎"
+    "welcome": "歡迎",
+    
+    "layout.login.title.welcome": "歡迎",
+    "layout.login.checkbox.remberMe": "記住帳號密碼",
+    "layout.login.button.login": "登 入",
+    "api.login.accountError": "帳號或密碼錯誤",
+    "api.login.systemError": "系統錯誤",
+
+    "layout.header.navbar.monitor": "監控台",
+    "layout.header.navbar.setting": "設定",
+    "layout.header.navbar.logs": "日誌",
+    "layout.header.search.plateOrSpace": "車牌 or 車格",
+    "layout.header.dropdown.porfile": "個人資訊",
+    "layout.header.dropdown.logout": "登出",
+    "layout.header.dropdown.exit": "離開",
+
+    "layout.monitor.title.monitor": "系統監控",
+    "layout.monitor.checkbox.area": "區域",
+    "layout.monitor.checkbox.type": "種類",
+    "layout.monitor.title.allFloor": "全部樓層",
+    "layout.monitor.title.alert": "系統警告",
+
+    "layout.monitor.label.inUse": "占用",
+    "layout.monitor.label.noUse": "剩餘",
+    "layout.monitor.label.total": "總數",
+    "layout.monitor.label.useRate": "占用率",
+
+    "layout.monitor.label.alertType": "警報種類",
+    "layout.monitor.label.carNo": "車格號碼",
+    "layout.monitor.label.time": "時間",
+
+    "layout.setting.sidebar.maps": "地圖",
+    "layout.setting.sidebar.spaces": "車位",
+    "layout.setting.sidebar.watchdogs": "監控器",
+
+    "layout.parkingMaps.title.parkingmaps": "停車場地圖",
+    "layout.parkingMaps.title.map": "地圖",
+    "layout.parkingMaps.info.fileFormat": "檔案格式",
+    "layout.parkingMaps.info.fileSelect": "檔案已選擇",
+    "layout.parkingMaps.button.editAreas": "編輯區域",
+    "layout.parkingMaps.button.editMap": "編輯地圖",
+    "layout.parkingMaps.label.name": "名稱",
+    "layout.parkingMaps.label.pic": "圖片",
+
+    "layout.parkingMaps.title.area": "區域",
+
+    "layout.parkingspaces.title.parkingspaces": "停車場車位",
+    "layout.parkingspaces.title.space": "車位",
+    "layout.parkingspaces.label.name": "名稱",
+    "layout.parkingspaces.label.typeInit": "種類預設",
+    "layout.parkingspaces.label.emptyColor": "空車顏色",
+    "layout.parkingspaces.label.inuseColor": "停車顏色",
+    "layout.parkingspaces.label.errorColor": "異常顏色",
+
+    
+
+    "layout.modal.text.create": "新增",
+    "layout.modal.text.edit": "修改",
+    "layout.modal.text.delete": "刪除",
+    "layout.modal.info.isDelete": "是否確定刪除 {name} {title}?",
+    "layout.modal.text.cancel": "取消",
+    "layout.modal.select.default": "預設",
+    "layout.modal.select.notDefault": "非預設"
+    
+    
 }
