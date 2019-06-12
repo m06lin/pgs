@@ -20,8 +20,8 @@
             <b-card-body class="mx-2">
               <b-row class="mb-3" v-for="(input, inputIndex) in areaInput" v-bind:key="input.key"> 
                 <label class="col-5">{{input.name}}</label>
-                <b-form-input v-if="input.type=='select'" type="text" class="text-center col-6" v-model="item.value[inputIndex]" readonly/>
-                 <b-form-input v-if="input.type!='select'" :type="input.type" class="text-center col-6" v-model="item.value[inputIndex]" readonly disabled/>
+                  <b-form-input v-if="input.type=='select'" type="text" class="text-center col-6" v-model="item.value[inputIndex]" readonly/>
+                  <b-form-input v-if="input.type!='select'" :type="input.type" class="text-center col-6" v-model="item.value[inputIndex]" readonly disabled/>
               </b-row>
             </b-card-body>
           </b-card>

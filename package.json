@@ -62,6 +62,7 @@
     "bootstrap-vue": "^2.0.0-rc.18",
     "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
+    "vee-validate": "^2.2.9",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-i18n": "^8.11.2",

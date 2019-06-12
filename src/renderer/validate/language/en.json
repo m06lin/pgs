@@ -1,0 +1,5 @@
+{
+    "welcome": "Welcome",
+    "validations.messages.required": "required!",
+    "validations.attributes.fname": "Name~~"
+}
