@@ -111,8 +111,10 @@
 //     return {
 //       /* eslint object-curly-newline: ["error", { "multiline": true }] */
 //       parkingContent: [
-//         { id: 1, name: '預設車位', init: '預設', empty: '#00ff00', inuse: '#ff0000', error: '#0000ff' },
-//         { id: 2, name: '月租車位', init: '非預設', empty: '#00ff00', inuse: '#ff0000', error: '#0000ff' },
+//         { id: 1, name: '預設車位', init: '預設',
+//  empty: '#00ff00', inuse: '#ff0000', error: '#0000ff' },
+//         { id: 2, name: '月租車位', init: '非預設',
+//  empty: '#00ff00', inuse: '#ff0000', error: '#0000ff' },
 //       ],
 //       newParking: {},
 //       editParking: {},

@@ -13,6 +13,7 @@ export default {};
   html, body {
     height:100%;
     margin: 0;
+    line-height: 1;
     -moz-user-select: none;  /* for Firefox */ ;
     -webkit-user-select: none;   /* for Chrome */;
   }

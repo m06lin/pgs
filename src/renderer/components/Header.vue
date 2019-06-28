@@ -48,8 +48,8 @@ export default {
 </script>
 
 <style>
-  #header-nav .navbar-height {
-    height: 60px;
+  #header-nav.navbar-height {
+    height: 60px !important;
   }
   #header-nav .navbar-brand{
     font-size: 1.8rem !important;

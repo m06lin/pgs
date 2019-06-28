@@ -2,10 +2,11 @@
   <b-modal id="modal-add-card" ref="addCardModal" :title="'新增'+cardTitle" hide-footer
     @show="addNewCardResetEvent"
     @hidden="addNewCardResetEvent">
-    <b-form ref="initCardForm">
+    <b-form ref="initCardForm" @submit="addCardOkEvent">
       <!-- name -->
-      <b-form-group :label="cardTitle+'名稱'" label-for="new-name-input" class="mb-2">
-        <b-form-input id="new-name-input" v-model="defaultCardContent.name" required pattern="[^-@]*"></b-form-input>
+      <b-form-group :label="cardTitle+'名稱'" class="mb-2">
+        <b-form-input v-model="defaultCardContent.name" :data-vv-name="cardTitle" :class="{ 'is-invalid': errors.has(cardTitle) }" v-validate="'required|specailtype'"></b-form-input>
+        <span class="invalid-feedback">{{ errors.first(cardTitle) }}</span>
       </b-form-group>
       <!-- Select / Input -->
       <b-form-group :label="input.name" v-for="(input, inputIndex) in cardInput" v-bind:key="input.key" class="mb-2">
@@ -13,12 +14,13 @@
           <option>預設</option>
           <option>非預設</option>
         </b-form-select>
-        <b-form-input v-if="input.type!='select'" :type="input.type" v-model="defaultCardContent.value[inputIndex]"/>
+        <b-form-input v-if="input.type!='select'" :type="input.type" v-model="defaultCardContent.value[inputIndex]"  v-validate="'required'"/>
+        <span>{{ errors.first(input.name) }}</span>
       </b-form-group>
       <!-- Button -->
       <b-form-group class="text-right">
         <b-button variant="secondary" @click="$refs.addCardModal.hide()">關閉</b-button>
-        <b-button variant="primary" @click="addCardOkEvent">確定</b-button>
+        <b-button variant="primary">確定</b-button>
       </b-form-group>
     </b-form>
   </b-modal>

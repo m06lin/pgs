@@ -144,6 +144,9 @@ export default {
     editAreaEvent(item) {
       this.$router.push({ name: 'areaEditor', params: { id: item.id } });
     },
+    editMapEvent(item) {
+      this.$router.push({ name: 'mapEditor', params: { id: item.id } });
+    },
   },
 };
 </script>

@@ -72,7 +72,6 @@
     "vuex-electron": "^1.0.0"
   },
   "devDependencies": {
-    "@types/json-server": "^0.14.0",
     "ajv": "^6.5.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -89,6 +88,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
+    "d3": "^5.9.2",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^2.0.4",
