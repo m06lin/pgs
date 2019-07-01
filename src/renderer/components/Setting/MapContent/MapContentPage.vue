@@ -19,6 +19,7 @@
             <b-card-footer class="text-right">
               <b-button variant="outline-dark"  @click="editAreaEvent(item)">{{$t('layout.parkingMaps.button.editAreas')}}</b-button>
               <b-button variant="outline-dark" @click="editMapEvent(item)">{{$t('layout.parkingMaps.button.editMap')}}</b-button>
+              <b-button variant="outline-dark" @click="editMapEvent2(item)">{{$t('layout.parkingMaps.button.editMap')}}2</b-button>
             </b-card-footer>
           </b-card>
         </draggable>
@@ -146,6 +147,9 @@ export default {
     },
     editMapEvent(item) {
       this.$router.push({ name: 'mapEditor', params: { id: item.id } });
+    },
+    editMapEvent2(item) {
+      this.$router.push({ name: 'mapEditor2', params: { id: item.id } });
     },
   },
 };
