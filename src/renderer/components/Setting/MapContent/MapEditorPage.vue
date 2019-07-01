@@ -9,9 +9,10 @@
     </div>
     <div class="map-editor-content">
       <div class="map-editor-pic">
-        <img style="z-index:-1;position:absolute;" width='100%' @load="loaded()" src='https://tw-aed.mohw.gov.tw/UploadFile/20170703031250796.jpg'/>
-        <svg></svg>
-        <ul id="context-menu">
+        <svg style="position:absolute"></svg>
+        <img ref="imgMap" class="w-100" @load="imgLoaded()" src='http://ta001.pgs.ichenparking.com.tw:8830/maps/1534270432211.jpeg'/>
+        
+        <ul id="context-menu" v-if="isShowContextMenu">
           <li class="context-menu-item" v-b-modal.modal-edit-point>
             設置裝置
           </li>
@@ -73,7 +74,6 @@
           </b-row>
         </b-col>
       </b-row>
- 
     <!-- footer -->
     <div slot="modal-footer" class="w-100 text-right">
       <b-button variant="secondary" @click="findPointPositionEvent(selectedPoint)">導引</b-button>
@@ -85,20 +85,20 @@
 </template>
 
 <script>
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as d3 from 'd3';
 import ContextMenu from '../../Modal/Menu';
+
 export default {
   components: { ContextMenu },
   data() {
     return {
       /* eslint object-curly-newline: ["error", { "multiline": true }] */
       pointsData: [
-        { id: 1561096685211, coordinateX: 50.62, coordinateY: 50.44, spaceId: 123 },
-        // { id: 1561096685212, perX: 7.62, perY: 70.80, spaceId: 124 },
-        // { id: 1561096685213, perX: 80.70, perY: 80.80, spaceId: 126 },
-        // { id: 1561096685214, perX: 76.07, perY: 10.17, spaceId: 127 },
+        { id: 1561096685211, xScale: 0.5062, yScale: 0.5044, spaceId: 123 },
+        { id: 1561096685212, xScale: 0.0762, yScale: 0.7080, spaceId: 124 },
+        { id: 1561096685213, xScale: 0.8070, yScale: 0.8080, spaceId: 126 },
+        { id: 1561096685214, xScale: 0.7607, yScale: 0.1017, spaceId: 127 },
         // 1600 918
         // { id: 1561096685212, x: 122, y: 650, spaceId: 124 },
         // { id: 1561096685213, x: 300, y: 150, spaceId: 126 },
@@ -106,58 +106,52 @@ export default {
       ],
       spacesData: [
         { id: 123, plateNo: 'ABC-123', spaceName: 'B3-123' },
-        { id: 124, plateNo: 'EEE-4678', spaceName: 'B3-124', type: 'default', group: 'default', state: 'Green', enterTime: '11:09:48', stayTime: '00:34.38', img: 'https://placekitten.com/g/300/300' },
+        { id: 124, plateNo: 'EEE-4678', spaceName: 'B3-124', type: 'default', group: 'default', state: 'Green', enterTime: '11:09:48', stayTime: '00:34.38', img: '' },
         { id: 126, plateNo: '', spaceName: 'B3-125' },
       ],
+      onDraggable: d3.drag(),
       canvasSvg: {},
-      onDragEvent: {},
       canvasWidth: 0,
       canvasHeight: 0,
       selectedPoint: {},
       selectedIndex: 0,
+      isShowContextMenu: false,
     };
   },
   mounted() {
     // point drag event
-    this.onDragEvent = d3.drag()
-      .on('start', (d, i, a) => {
-        d3.select(a[i])
-          .attr('fill', 'black')
-          .attr('r', 10);
-      })
-      .on('drag', (d, i, a) => {
-        const positionX = Math.max(0, Math.min(this.canvasWidth, d3.event.x));
-        const positionY = Math.max(0, Math.min(this.canvasHeight, d3.event.y));
-
-        d3.select(a[i])
-          .attr('cx', positionX)
-          .attr('cy', positionY);
-
-        const perX = ((positionX / this.canvasWidth) * 100);
-        const perY = ((positionY / this.canvasHeight) * 100);
-
-        this.pointsData[i].coordinateX = perX;
-        this.pointsData[i].coordinateY = perY;
-      })
-      .on('end', (d, i, a) => {
-        d3.select(a[i])
-          .attr('fill', () => {
-            if (!d.spaceId) {
-              return 'gray';
-            }
-            return 'red';
-          });
-      });
+    this.onDraggable
+      .on('start', (d, i, a) => this.onDragStart(d, i, a))
+      .on('drag', (d, i, a) => this.onDragging(d, i, a))
+      .on('end', (d, i, a) => this.onDragEnd(d, i, a));
   },
   methods: {
-    loaded() {
-      this.canvasWidth = d3.select('.map-editor-pic > img').style('width').slice(0, -2);
-      this.canvasHeight = d3.select('.map-editor-pic > img').style('height').slice(0, -2);
+    onDragStart(data, index, all) {
+      d3.select(all[index]).attr('r', 10);
+    },
+    onDragging(data, index, all) {
+      const positionX = Math.max(0, Math.min(this.canvasWidth, d3.event.x));
+      const positionY = Math.max(0, Math.min(this.canvasHeight, d3.event.y));
+
+      d3.select(all[index])
+        .attr('cx', positionX)
+        .attr('cy', positionY);
+    },
+    onDragEnd(data, index, all) {
+      const dragPoint = d3.select(all[index]);
+
+      this.pointsData[index].xScale = dragPoint.attr('cx') / this.canvasWidth;
+      this.pointsData[index].yScale = dragPoint.attr('cy') / this.canvasHeight;
+      dragPoint.attr('fill', (d, i, a) => this.setPointColor(d, i, a));
+    },
+    imgLoaded() {
+      this.canvasWidth = this.$refs.imgMap.clientWidth;
+      this.canvasHeight = this.$refs.imgMap.clientHeight;
       this.canvasSvg = d3.select('.map-editor-pic > svg')
         .attr('width', `${this.canvasWidth}px`)
         .attr('height', `${this.canvasHeight}px`)
         .on('click', () => {
-          this.addpointEvent();
+          this.addPointEvent();
         });
       this.svgRedrawEvent();
     },
@@ -165,8 +159,8 @@ export default {
       const updatePointsData = this.canvasSvg.selectAll('circle').data(this.pointsData);
       // Update View Point
       updatePointsData
-        .attr('cx', (d => ((d.coordinateX / 100) * this.canvasWidth)))
-        .attr('cy', (d => ((d.coordinateY / 100) * this.canvasHeight)));
+        .attr('cx', d => (d.xScale * this.canvasWidth))
+        .attr('cy', d => (d.yScale * this.canvasHeight));
       // Remove View Point
       updatePointsData
         .exit().remove();
@@ -174,18 +168,13 @@ export default {
       updatePointsData
         .enter()
         .append('circle')
-        .attr('cx', (d => ((d.coordinateX / 100) * this.canvasWidth)))
-        .attr('cy', (d => ((d.coordinateY / 100) * this.canvasHeight)))
+        .attr('cx', d => d.xScale * this.canvasWidth)
+        .attr('cy', d => d.yScale * this.canvasHeight)
         .attr('r', 10)
-        .attr('stroke', 'black')
-        .attr('stroke-width', 0)
-        .attr('fill', (d) => {
-          if (!d.spaceId) {
-            return 'gray';
-          }
-          return 'red';
-        })
-        .call(this.onDragEvent)
+        .attr('stroke', (d, i, a) => this.setPointStroke(d, i, a))
+        .attr('stroke-width', 3)
+        .attr('fill', (d, i, a) => this.setPointColor(d, i, a))
+        .call(this.onDraggable)
         .on('mousemove', (d, i, a) => {
           d3.select(a[i]).attr('r', 15).style('cursor', 'pointer');
         })
@@ -196,20 +185,21 @@ export default {
           this.$refs.showSpaceModal.show();
           this.selectedPoint = this.spacesData.find(x => x.id === d.spaceId) || {};
           d3.event.stopPropagation();
+          this.isShowContextMenu = true;
         })
-        .on('contextmenu', (data, index, a) => {
-          this.showContextMenuEvent(data, index, a, this.pointsData);
+        .on('contextmenu', (d, i) => {
+          this.showContextMenuEvent(d, i);
           d3.event.preventDefault();
         });
     },
-    addpointEvent() {
+    addPointEvent() {
       const newPointId = new Date().getTime();
       this.pointsData.push({
         id: newPointId,
-        X: (d3.event.offsetX / this.canvasWidth) * 100,
-        coordinateY: (d3.event.offsetcoordinateY / this.canvasHeight) * 100,
+        xScale: d3.event.offsetX / this.canvasWidth,
+        yScale: d3.event.offsetY / this.canvasHeight,
       });
-      d3.select('#context-menu').style('display', 'none');
+      this.isShowContextMenu = false;
       this.svgRedrawEvent();
     },
     eidtPointEvent() {
@@ -224,20 +214,40 @@ export default {
     showContextMenuEvent(data, index) {
       this.selectedPoint = { ...data };
       this.selectedIndex = index;
+
       const menu = d3.select('#context-menu');
+
       menu.style('position', 'absolute')
         .style('left', `${d3.event.offsetX}px`)
         .style('top', `${d3.event.offsetY}px`)
         .style('display', 'inline-block')
-        .on('mouseleave', () => {
-          d3.select('#context-menu').style('display', 'none');
-        })
         .on('click', () => {
-          d3.select('#context-menu').style('display', 'none');
+          this.isShowContextMenu = false;
         });
     },
     findPointPositionEvent() {
       console.log(this.selectedPoint.id);
+    },
+    setPointColor(data, index, all) {
+      let color = '';
+      d3.select(all[index])
+        .attr('fill', () => {
+          if (!data.spaceId) {
+            color = 'gray';
+          }
+          color = 'red';
+        });
+      return color;
+    },
+    setPointStroke(data, index, all) {
+      let color = '';
+      d3.select(all[index])
+        .attr('stroke', () => {
+          if (true) {
+            color = '#0000ff';
+          }
+        });
+      return color;
     },
   },
 };
