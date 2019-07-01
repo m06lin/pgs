@@ -12,7 +12,7 @@
         <svg style="position:absolute"></svg>
         <img ref="imgMap" class="w-100" @load="imgLoaded()" src='http://ta001.pgs.ichenparking.com.tw:8830/maps/1534270432211.jpeg'/>
         
-        <ul id="context-menu" v-if="isShowContextMenu">
+        <ul id="context-menu" v-show="isShowContextMenu">
           <li class="context-menu-item" v-b-modal.modal-edit-point>
             設置裝置
           </li>
@@ -151,7 +151,10 @@ export default {
         .attr('width', `${this.canvasWidth}px`)
         .attr('height', `${this.canvasHeight}px`)
         .on('click', () => {
-          this.addPointEvent();
+          if (!this.isShowContextMenu) {
+            this.addPointEvent();
+          }
+          this.isShowContextMenu = false;
         });
       this.svgRedrawEvent();
     },
@@ -185,7 +188,7 @@ export default {
           this.$refs.showSpaceModal.show();
           this.selectedPoint = this.spacesData.find(x => x.id === d.spaceId) || {};
           d3.event.stopPropagation();
-          this.isShowContextMenu = true;
+          this.isShowContextMenu = false;
         })
         .on('contextmenu', (d, i) => {
           this.showContextMenuEvent(d, i);
@@ -199,7 +202,6 @@ export default {
         xScale: d3.event.offsetX / this.canvasWidth,
         yScale: d3.event.offsetY / this.canvasHeight,
       });
-      this.isShowContextMenu = false;
       this.svgRedrawEvent();
     },
     eidtPointEvent() {
@@ -214,7 +216,7 @@ export default {
     showContextMenuEvent(data, index) {
       this.selectedPoint = { ...data };
       this.selectedIndex = index;
-
+      this.isShowContextMenu = true;
       const menu = d3.select('#context-menu');
 
       menu.style('position', 'absolute')
@@ -265,10 +267,8 @@ export default {
   left: 0;
   margin: 0;
   padding: 0;
-  display: none;
   list-style: none;
   position: absolute;
-  z-index: 2147483647;
   background-color: white;
   border: 1px solid #ebebeb;
   border-bottom-width: 0px;
